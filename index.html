@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<style>
+    .lineParent {
+        overflow: hidden;
+        display: block;
+    }
+
+    .refLineParent {
+        overflow: hidden;
+        display: block;
+    }
+
+    .refmenuParent {
+        overflow: hidden;
+        display: block;
+    }
+
+    .reflogoParent {
+        overflow: hidden;
+        display: block;
+    }
+
+    .refboxrightParent {
+        overflow: hidden;
+        display: block;
+    }
+
+    .reffooter {
+        overflow: hidden;
+        display: block;
+    }
+
+    .reffooterParent {
+        overflow: hidden;
+        display: block;
+    }
+
+
+
+    .holder {
+        overflow: hidden;
+    }
+
+    .holder img {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .menu-icon .line {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: black;
+        border-radius: 2px;
+    }
+</style>
+
+
+<body>
+    <!-- Gsap SlpitText -->
+    <div class="grid grid-cols-12 grid-rows-[250px_auto_200px] h-screen">
+        <div class="col-span-3  p-4 border-l border-r">
+            <!-- <span class="logo text-[20px] font-medium text-[#313131]">architecht</span> -->
+             <img src="/logo.png" alt="" class="w-auto h-14 object-cover">
+        </div>
+        <div class="col-span-3  p-4  border-r">
+            <span class="title text-[60px] leading-none font-medium text-[#313131]">Interior <br> Furniture</span>
+        </div>
+        <div class="col-span-6  p-4  ">
+            <div class="flex justify-between items-center">
+                <ul class="flex gap-x-5">
+                    <li class="menu text-[#313131]"><a href="">Search</a></li>
+                    <li class="menu text-[#313131]"><a href="">Contact</a></li>
+                    <li class="menu text-[#313131]"><a href="">Projects</a></li>
+                </ul>
+                <div class="menu-icon w-8 h-5 flex flex-col justify-between">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-6 holder  ">
+            <img src="/008.avif" class="w-full h-full object-cover">
+        </div>
+        <div class="col-span-3  p-4 border-t border-r border-l">
+            <div class="flex flex-col justify-end h-full pb-10">
+                <span class="refined-title text-[50px] leading-none font-medium text-[#313131]">Refined materials</span>
+                <span class="refined-desc text-[#313131]">Crafted with warmth and precision.</span>
+            </div>
+        </div>
+        <div class="col-span-3  px-4 py-7 border-t">
+            <div class="flex flex-col justify-between h-full ">
+                <span class="boxright text-[20px] font-medium text-[#313131]">Designed for balance</span>
+                <span class="boxright-desc text-[#313131]">Simple forms, thoughtful details.</span>
+            </div>
+        </div>
+        <div class="col-span-12  p-4 border">
+            <div class="w-2/3">
+                <span class="reffooter text-[#313131]">Playing with scale, texture, and the quiet rhythm of everyday spaces, this piece
+                    was developed to
+                    highlight how subtle design decisions can shape the atmosphere of a room. By pairing warm natural
+                    materials with clean, restrained forms, we aimed to create something that feels both grounded and
+                    adaptable.</span>
+            </div>
+        </div>
+    </div>
+    <div class="h-[900px] bg-[#F7F5F5]">
+        <img src="/img/010.jpg" alt="" class="h-full w-full object-cover">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // scroll smooth
+            const lenis = new Lenis();
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+
+            new SplitText(".logo", { type: "lines", linesClass: "reflogoChild" });
+            new SplitText(".logo", { type: "lines", linesClass: "reflogoParent" });
+
+            gsap.from(".reflogoChild", {
+                yPercent: 110,
+                duration: 0.5,
+                ease: "power2.out",
+                stagger: 0.05,
+                delay: 0.35
+            });
+            new SplitText(".boxright", { type: "lines", linesClass: "refboxrightChild" });
+            new SplitText(".boxright", { type: "lines", linesClass: "refboxrightParent" });
+            gsap.from(".refboxrightChild", {
+                yPercent: 110,
+                duration: 0.5,
+                ease: "power2.out",
+                stagger: 0.05,
+                delay: 0.5
+            });
+            gsap.from(".boxright-desc", {
+                opacity: 0,
+                y: 10,
+                duration: 0.5,
+                delay: 0.5,
+                ease: "power2.out"
+            });
+            // wrap 2 layers
+            new SplitText(".title", { type: "lines", linesClass: "lineChild" });
+            new SplitText(".title", { type: "lines", linesClass: "lineParent" });
+            gsap.from(".lineChild", {
+                yPercent: 100,
+                duration: 0.7,
+                ease: "power2.out",
+                stagger: 0.1
+            });
+            new SplitText(".refined-title", { type: "lines", linesClass: "refLineChild" });
+            new SplitText(".refined-title", { type: "lines", linesClass: "refLineParent" });
+            gsap.from(".refLineChild", {
+                yPercent: 110,
+                duration: 0.7,
+                ease: "power2.out",
+                stagger: 0.05,
+                delay: 0.25
+            });
+            gsap.from(".refined-desc", {
+                opacity: 0,
+                y: 10,
+                duration: 0.5,
+                delay: 0.4,
+                ease: "power2.out"
+            });
+            new SplitText(".reffooter", { type: "lines", linesClass: "reffooterChild" });
+            new SplitText(".reffooter", { type: "lines", linesClass: "reffooterParent" });
+            gsap.from(".reffooterChild", {
+                yPercent: 110,
+                duration: 0.7,
+                ease: "power2.out",
+                stagger: 0.05,
+                delay: 0.25
+            });
+            new SplitText(".menu", { type: "lines", linesClass: "refmenuChild" });
+            new SplitText(".menu", { type: "lines", linesClass: "refmenuParent" });
+
+            gsap.from(".refmenuChild", {
+                yPercent: 130,
+                duration: 0.9,
+                ease: "power2.out",
+                stagger: 0.09,
+                delay: 0.25
+            });
+            gsap.from(".menu-icon .line", {
+                y: -10,
+                opacity: 0,
+                duration: 0.7,
+                ease: "power3.out",
+                stagger: 0.07,
+                delay: 0.25
+            });
+            const tl = gsap.timeline();
+            tl
+                .fromTo(".holder", { yPercent: -100 }, { duration: 1.2, yPercent: 0 })
+                .fromTo(".holder img", { yPercent: 100 }, { duration: 1.2, yPercent: 0 }, "<");
+        });
+    </script>
+</body>
+
+</html>
